@@ -29,6 +29,7 @@ class Experince(models.Model):
     
     
 class Project(models.Model):
+    user = models.ForeignKey(BasicDetails, on_delete = models.CASCADE, related_name="projects")
     project_title = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
     client = models.CharField(max_length=100)
@@ -40,12 +41,14 @@ class Project(models.Model):
     
         
 class Skills(models.Model):
+    user = models.ForeignKey(BasicDetails, on_delete=models.CASCADE, related_name="skills")
     name = models.CharField(max_length=100)
     
     def __str__(self):
         return self.name
     
 class Education(models.Model):
+    user = models.ForeignKey(BasicDetails, on_delete=models.CASCADE, related_name="education")
     degree = models.CharField(max_length=100)
     university = models.CharField(max_length=100)
     course = models.CharField(max_length=100)
